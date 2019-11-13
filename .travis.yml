@@ -13,7 +13,7 @@ after_success:
   - docker build -t cpjohnston/multi-nginx ./nginx
   - docker build -t cpjohnston/multi-server ./server
   - docker build -t cpjohnston/multi-worker ./worker
-  - docker login -u "$DOCKER_ID" -p "$DOCKER_ACCESS_TOKEN"
+  - echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push cpjohnston/multi-client
   - docker push cpjohnston/multi-nginx
   - docker push cpjohnston/multi-server
